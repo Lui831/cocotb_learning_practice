@@ -1,0 +1,33 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity 8bit_mux is
+    port (
+        sel   : in  std_logic_vector(2 downto 0); -- Selecionador de 3 bits
+        inpt   : in  std_logic_vector(7 downto 0); -- Vetor de entrada de 8 bits
+        rst : in  std_logic;                   -- Reset
+        outpt  : out std_logic                    -- Saída
+    );
+end 8bit_mux;
+
+architecture Behavioral of 8bit_mux is
+begin
+    process(sel, inpt, rst)
+    begin
+        if rst = '1' then
+            outpt <= '0'; -- Reseta a saída
+        else
+            case sel is
+                when "000" => outpt <= inpt(0);
+                when "001" => outpt <= inpt(1);
+                when "010" => outpt <= inpt(2);
+                when "011" => outpt <= inpt(3);
+                when "100" => outpt <= inpt(4);
+                when "101" => outpt <= inpt(5);
+                when "110" => outpt <= inpt(6);
+                when "111" => outpt <= inpt(7);
+                when others => outpt <= '0'; -- Caso inesperado
+            end case;
+        end if;
+    end process;
+end Behavioral;
