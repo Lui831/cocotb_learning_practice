@@ -56,8 +56,6 @@ async def simple_state_machine_validation_behaviour(dut):
     # Initializes the clock cycles counter
     clk_cycles_counter = 0
 
-    dut.new_signal.setimmediatevalue(BinaryValue(value=0, n_bits=1))
-
     # Initializes the machine analogous state and output, treated as global variables
     global machine_analogous_state
     global machine_analogous_output

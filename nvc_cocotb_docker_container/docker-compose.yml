@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  debian_service:
+    build:
+      context: .        # Diretório onde o Dockerfile está localizado (neste caso, o mesmo diretório do docker-compose.yml)
+      dockerfile: Dockerfile  # Nome do Dockerfile (caso seja diferente, especifique aqui)
+    container_name: cocotb_container
+    stdin_open: true     # Mantém o stdin aberto, útil para interações no terminal
+    tty: true            # Habilita terminal para o container
+    entrypoint: sh -c "make && sleep 60" # Comando para rodar o bash no container
+
+    # Exemplo de dependências de outros serviços, se for necessário
+    # depends_on:
+    #   - another_service
